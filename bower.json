@@ -1,5 +1,6 @@
 {
   "name": "epam-product-comparison-yaas",
+  "version": "0.0.2",
   "main": "productcomparison.js",
   "homepage": "https://github.com/EPAM-YAAS/productcomparison",
   "authors": [
