@@ -13,7 +13,7 @@ Example usage of directives based on [Yaas storefront](https://github.com/SAP/ya
 4. Add dependency to bower.json
 
         "dependencies": {
-            "epam-product-comparison-yaas": "1.0.0"
+            "epam-product-comparison-yaas": "0.0.2"
         } 
 5. Run `npm install`. After task finishes you will have `epam-product-comparison-yaas` package in `public/js/app/vendor` folder
 
