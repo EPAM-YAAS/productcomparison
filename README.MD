@@ -15,20 +15,45 @@ Example usage of directives based on [Yaas storefront](https://github.com/SAP/ya
         "dependencies": {
             "epam-product-comparison-yaas": "0.0.2"
         } 
+        
 5. Run `npm install`. After task finishes you will have `epam-product-comparison-yaas` package in `public/js/app/vendor` folder
 
-6. Add css and js dependencies to index.html
+6. Add js dependencies to index.html
 
-        <link href="js/vendor/epam-product-comparison-yaas/dist/epam-product-comparison-yaas.min.css" rel="stylesheet">
-        <script src="js/vendor/epam-product-comparison-yaas/dist/epam-product-comparison-yaas.min.js"></script>
-7. Modify `product-detail.html` and `product-list.html`. Add button for add/remove product for these pages.
+        <script src="js/vendor/epam-product-comparison-yaas/productcomparison.js"></script>
+        <script src="js/vendor/epam-product-comparison-yaas/controllers/product-comparison-ctrl.js"></script>
+        <script src="js/vendor/epam-product-comparison-yaas/directives/comparison-button.js"></script>
+        <script src="js/vendor/epam-product-comparison-yaas/directives/comparison-count-header.js"></script>
+        <script src="js/vendor/epam-product-comparison-yaas/services/productcomparison-rest.js"></script>
+        <script src="js/vendor/epam-product-comparison-yaas/services/productcomparison-service.js"></script>
+        <script src="js/vendor/epam-product-comparison-yaas/shared/scroll-top-btn.js"></script>
+        <script src="js/vendor/epam-product-comparison-yaas/shared/spinner.js"></script>
+        
+7. Also check or add next module into your application:
+
+        "remarkable-bootstrap-notify"
+        "angular-spinner"
+        "restangular"
+        "angular"
+        "bootstrap"
+        "restangular"
+        "spin.js"
+        "lodash"
+        
+Note, that you can find all this loaded modules in the same folder with epam-product-comparison-yaas.
+
+8. Add css dependencies to index.html
+
+        <link href="js/vendor/css/comparison.css" rel="stylesheet">
+        
+9. Modify `product-detail.html` and `product-list.html`. Add button for add/remove product for these pages.
 
         <comparison-button product="product.product"></comparison-button>
-8. Modify `top-navigation.html`. Add information of count products in comparison ![Product Comparison](https://pp.vk.me/c629313/v629313233/2f415/Lp5ZvO93YbI.jpg)
+10. Modify `top-navigation.html`. Add information of count products in comparison ![Product Comparison](https://pp.vk.me/c629313/v629313233/2f415/Lp5ZvO93YbI.jpg)
 
         <div data-comparison-count></div>
 
-9. Added products will appear in your store by clicking on `count of products(that you add in previous step)` or by clicking on `popup on the right top corner of the page`
+11. Added products will appear in your store by clicking on `count of products(that you add in previous step)` or by clicking on `popup on the right top corner of the page`
 
 #Good luck and use Product Comparison!#
 ![Add/Remove buttons](https://pp.vk.me/c629313/v629313233/2f451/4MNXCOrVqOU.jpg)
