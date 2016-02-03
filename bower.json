@@ -1,0 +1,23 @@
+{
+  "name": "epam-product-comparison-yaas",
+  "main": "productcomparison.js",
+  "homepage": "https://github.com/EPAM-YAAS/productcomparison",
+  "authors": [
+    "EPAM systems"
+  ],
+  "description": "product comparison module",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "remarkable-bootstrap-notify": "~3.1.3",
+    "angular-spinner": "~0.8.0",
+    "restangular": "~1.5.1"
+  }
+}

@@ -1,0 +1,72 @@
+<div class="container comparison">
+	<div class="row" ng-if="products.length">
+		<div class="col-md-2 comparison-cat-box">
+			<span class="title">Categories:</span>
+			<ul class="comparison-cat-list">
+				<li class="comparison-cat-list-item"
+					ng-class="selectedCategoryId === 'All' ? 'active' : ''"
+					ng-click="setSelectedCategory('All')">
+					<span>All</span>
+					<span ng-if="category.count">({{category.count}})</span>
+				</li>
+				<li class="comparison-cat-list-item"
+					ng-class="category.id === selectedCategoryId ? 'active' : ''"
+					ng-repeat="category in categories"
+					ng-click="setSelectedCategory(category.id);">
+					<span>{{category.name}}</span>
+					<span>({{category.count}})</span>
+				</li>
+			</ul>
+			<button class="btn comparison-remove-btn btn-primary" ng-click="removeAll()">remove all</button>
+		</div>
+		<div class="col-md-10 comparison-products-box">
+			<table class="table table-hover table-condensed">
+				<tr>
+					<th class="col-md-4"></th>
+					<th ng-repeat="product in products">
+						<a href="/#!/products/{{product.id}}" class="img-wrapper">
+							<img src="{{product.media_url}}" class="img img-responsive">
+							<comparison-button
+								class="comparison-button"
+								is-comparison-page="isComparisonPage"
+								product="product">
+							</comparison-button>
+						</a>
+					</th>
+				</tr>
+				<tr>
+					<th class="col-md-3 switch-btn-box">
+						<button class="btn btn-primary">show all</button>
+						<!--<button class="btn btn-primary btn-disabled">only different</button>-->
+					</th>
+					<th ng-repeat="product in products" class="text-center hyicon-dragdrop">
+						<p class="prod-name">{{product.name}}</p>
+						<span class="price">{{product.price}}</span>
+					</th>
+				</tr>
+				<tbody ng-repeat="group in groups" class="comparison-group">
+					<tr>
+						<td colspan="{{products.length + 1}}" data-toggle="collapse" data-target=".{{group.id}}">
+							<div id="switch{{group.id}}">
+								<span class="glyphicon glyphicon-chevron-down switchUp"></span>
+								<span class="glyphicon glyphicon-chevron-right switchDown"></span>
+								{{group.title}}
+							</div>
+						</td>
+					</tr>
+					<tr ng-repeat="attribute in getAttributes(group.id)" class="{{group.id}} collapse in">
+						<td>{{getAttributeTitle(attribute, group.id)}}</td>
+						<td ng-repeat="product in products" class="text-center">
+							{{getProductAttribute(product, attribute, group.id)}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<scroll-top-btn></scroll-top-btn>
+	</div>
+	<div class="row no-product-msg" ng-hide="products.length || showSpinner">
+		<h1>No products in comparison. <a href="/#!/ct/">Try to add product into comparison.</a></h1>
+	</div>
+	<spinner spinner-shown="showSpinner"></spinner>
+</div>

@@ -1,0 +1,12 @@
+<a href="/#!/comparison" ng-show="numberOfProductsInComparison">
+    <div class="prodComparisonContainer row">
+        <div class="col-sm-6 col-xs-12">
+            <span class="badge" ng-bind="numberOfProductsInComparison"></span>
+        </div>
+    </div>
+</a>
+<div class="prodComparisonContainer row disabled" ng-hide="numberOfProductsInComparison">
+    <div class="col-sm-6 col-xs-12">
+        <span class="badge" ng-bind="numberOfProductsInComparison"></span>
+    </div>
+</div>
