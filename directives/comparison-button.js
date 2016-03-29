@@ -9,7 +9,7 @@ angular.module('epam.productcomparison')
                 product : '=',
                 isComparisonPage : '='
             },
-            controller: ['$scope', '$rootScope', function ($scope, $rootScope) {
+            controller: ['$scope', function ($scope) {
                 $scope.isAdded = null;
                 $scope.productId = $scope.product.id;
 
@@ -21,33 +21,45 @@ angular.module('epam.productcomparison')
                     e.preventDefault();
 
                     ProductComparisonService.addProductToComparison($scope.productId)
-                        .then(function(){
-                            $scope.isAdded = true;
-                            $rootScope.$broadcast('ADDED_TO_COMPARISON', $scope.productId);
+                        .then(function(isError) {
+
+                            if (isError) return;
 
                             $.notify({
                                 message: 'Product ' + $scope.product.name + ' was added to comparison.',
                                 url: '/#!/comparison',
                                 target: '_self'
+                            },{
+                                placement: {
+                                    from: "bottom",
+                                    align: "right"
+                                }
                             });
+
+                            $scope.isAdded = true;
                         });
                 };
 
                 $scope.removeFromComparison = function(e) {
                     e.preventDefault();
 
+                    if (!$scope.isComparisonPage) {  $scope.isAdded = false; }
+
                     ProductComparisonService.removeProductFromComparison($scope.productId)
                         .then(function(){
-                            $scope.isAdded = false;
-                            $rootScope.$broadcast('REMOVED_TO_COMPARISON', $scope.productId);
-
-                            if ($scope.isComparisonPage) return;
-
-                            $.notify({
-                                message: 'Product ' + $scope.product.name + ' was removed from comparison.',
-                                url: '/#!/comparison',
-                                target: '_self'
-                            });
+                            if (!$scope.isComparisonPage) {
+                                $scope.isAdded = false;
+                                $.notify({
+                                    message: 'Product ' + $scope.product.name + ' was removed from comparison.',
+                                    url: '/#!/comparison',
+                                    target: '_self'
+                                },{
+                                    placement: {
+                                        from: "bottom",
+                                        align: "right"
+                                    }
+                                });
+                            }
                         });
                 };
             }]

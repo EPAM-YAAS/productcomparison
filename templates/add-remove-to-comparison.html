@@ -2,10 +2,10 @@
     <button class="btn btn-primary btn-sm" ng-click="addToComparison($event)">Add to comparison</button>
 </div>
 <div ng-if="isAdded">
-    <button ng-show="isComparisonPage" class="btn btn-link remove-from-comparison" ng-click="removeFromComparison($event)">
+    <button ng-if="isComparisonPage" class="btn btn-link remove-from-comparison" ng-click="removeFromComparison($event)">
         <span class="hyicon hyicon-remove"></span>
     </button>
-    <button ng-hide="isComparisonPage" class="btn btn-primary btn-sm" ng-click="removeFromComparison($event)">
+    <button ng-if="!isComparisonPage" class="btn btn-primary btn-sm" ng-click="removeFromComparison($event)">
         Remove from comparison
     </button>
 </div>

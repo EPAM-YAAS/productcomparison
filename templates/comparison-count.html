@@ -1,10 +1,20 @@
-<a href="/#!/comparison" ng-show="numberOfProductsInComparison">
-    <div class="prodComparisonContainer row">
-        <div class="col-sm-6 col-xs-12">
+<div class="comparison-counter-box" ng-if="numberOfProductsInComparison">
+    <a href="/#!/comparison">
+        <div class="prodComparisonContainer row">
             <span class="badge" ng-bind="numberOfProductsInComparison"></span>
         </div>
+    </a>
+    <div ng-if="categories.length" class="categories-dropdown list-group">
+        <a type="button"
+           class="list-group-item"
+           ng-repeat="category in categories"
+           href="{{getRelatedLink(category.id)}}">
+            {{::category.name}}
+            ({{::category.count}})
+        </a>
     </div>
-</a>
+</div>
+
 <div class="prodComparisonContainer row disabled" ng-hide="numberOfProductsInComparison">
     <div class="col-sm-6 col-xs-12">
         <span class="badge" ng-bind="numberOfProductsInComparison"></span>
