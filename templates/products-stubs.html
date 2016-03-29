@@ -1,0 +1,10 @@
+<div class="product-stubs">
+    <div class="first-stub-item"></div>
+    <div class="product-icons stub-item" ng-repeat="product in comparisonProducts track by product.id">
+        <div class="img-wrapper">
+            <img src="{{product.media_url}}" class="img img-responsive">
+            <p class="">{{product.name}}</p>
+            <span class="">{{product.price}}</span>
+        </div>
+    </div>
+</div>
