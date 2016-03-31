@@ -1,0 +1,20 @@
+<span class="title cat-wrap-title">Categories:</span>
+<ul class="comparison-cat-list">
+    <li class="comparison-cat-list-item highlighted-cat" ng-click="setSelectedCategory($event,'All')">
+        <span>All</span>
+        <button class="btn btn-link remove-from-comparison"
+                ng-click="onCatRemove($event, null)">
+            <span class="hyicon hyicon-remove"></span>
+        </button>
+    </li>
+    <li class="comparison-cat-list-item"
+        ng-repeat="category in categories"
+        ng-click="setSelectedCategory($event,category.id);">
+        <span class="cat-title">{{::category.name}}</span>
+        <span class="cat-products-count">({{::category.count}})</span>
+        <button class="btn btn-link remove-from-comparison"
+                ng-click="onCatRemove($event, category.id)">
+            <span class="hyicon hyicon-remove"></span>
+        </button>
+    </li>
+</ul>
